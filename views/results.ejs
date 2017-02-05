@@ -1,0 +1,30 @@
+<link  rel="stylesheet" href="/stylesheets/reset.css">
+<link  rel="stylesheet" href="/stylesheets/main.css">
+<meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no" />
+
+    <div class="page_wrapper">
+        <div class="dates">
+            <h3>For <%= startDate %> the number of objects in 'Near Earth Orbit' is : <%= data["element_count"] %></h5>
+            
+                 <% for (var i=0, len=data["near_earth_objects"][startDate].length; i < len; i ++ ) { %>
+            <div class="individual">
+                       <h5>Name <%= data["near_earth_objects"][startDate][i]["name"] %></h5>
+                          <li>Orbiting around: <%= data["near_earth_objects"][startDate][i]["close_approach_data"][0]["orbiting_body"] %></li>
+                          <li>Threat: 
+                          <% if(data["near_earth_objects"][startDate][i]["is_potentially_hazardous_asteroid"] == true) { %>
+                              <strong class="danger"><%= data["near_earth_objects"][startDate][i]["is_potentially_hazardous_asteroid"] %></strong>
+                          <% } else { %>
+                          <%= data["near_earth_objects"][startDate][i]["is_potentially_hazardous_asteroid"] %>
+                          <% } %>
+                          </li>
+                          <% var num_miles= data["near_earth_objects"][startDate][i]["close_approach_data"][0]["miss_distance"]["miles"]; %>
+                          <li>Miss distance (miles): <%= (Math.round(num_miles)).toLocaleString(); %></li>
+                          <li>Diameter (miles): <%= data["near_earth_objects"][startDate][i]["estimated_diameter"]["miles"]["estimated_diameter_max"] %></li>
+                          <li>neo_reference_id: <a href=<%= data["near_earth_objects"][startDate][i]["nasa_jpl_url"] %> target=_blank><%= data["near_earth_objects"][startDate][i]["neo_reference_id"] %></a></li>
+            </div>        
+                 <% } %>  
+        </div>  
+         <div class="results_header">
+            <button id="more-btn"><a href="/">Search for more!</a></button> 
+        </div>
+    </div>
