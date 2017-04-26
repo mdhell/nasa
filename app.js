@@ -18,6 +18,7 @@ require("jsdom").env("", function(err, window) {
 });
 
 app.get("/results", function(req, res) {
+    //console.log(req.query.start);
     var startDate = req.query.start;
     var endDate   = req.query.end;
     // var url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY";
