@@ -120,6 +120,10 @@
         color: red;
     }
     
+    .safe {
+        color: #7FFF00;
+    }
+    
     
     .individual {
         float: left;

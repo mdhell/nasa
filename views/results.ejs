@@ -14,12 +14,19 @@
                           <% if(data["near_earth_objects"][startDate][i]["is_potentially_hazardous_asteroid"] == true) { %>
                               <strong class="danger"><%= data["near_earth_objects"][startDate][i]["is_potentially_hazardous_asteroid"] %></strong>
                           <% } else { %>
-                          <%= data["near_earth_objects"][startDate][i]["is_potentially_hazardous_asteroid"] %>
+                          <strong class="safe"><%= data["near_earth_objects"][startDate][i]["is_potentially_hazardous_asteroid"] %></strong>
                           <% } %>
                           </li>
                           <% var num_miles= data["near_earth_objects"][startDate][i]["close_approach_data"][0]["miss_distance"]["miles"]; %>
                           <li>Miss distance (miles): <%= (Math.round(num_miles)).toLocaleString(); %></li>
-                          <li>Diameter (miles): <%= data["near_earth_objects"][startDate][i]["estimated_diameter"]["miles"]["estimated_diameter_max"].toFixed(2) %></li>
+                              <% var size_neo = data["near_earth_objects"][startDate][i]["estimated_diameter"]["miles"]["estimated_diameter_max"].toFixed(2) %>
+                              <% if(size_neo < 1) { %>
+                              <% size_neo = size_neo * 1699.34 %>
+                                  <li>Diameter (meters): <%= size_neo.toFixed(1) %></li>  
+                              <% } else { %>
+                          <li>Diameter (miles): <%= data["near_earth_objects"][startDate][i]["estimated_diameter"]["miles"]["estimated_diameter_max"].toFixed(2) %></li>  
+                              <% } %>
+                          
                           <li>neo_reference_id: <a href=<%= data["near_earth_objects"][startDate][i]["nasa_jpl_url"] %> target=_blank><%= data["near_earth_objects"][startDate][i]["neo_reference_id"] %></a></li>
             </div>        
                  <% } %>  
@@ -27,4 +34,6 @@
          <div class="results_header">
             <button id="more-btn"><a href="/">Search for more!</a></button> 
         </div>
+        
+        
     </div>
