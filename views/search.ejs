@@ -12,7 +12,7 @@
   <link  rel="stylesheet" href="/stylesheets/main.css">
   <script>
   $( function() {
-    $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd'});
+    $( "#datepicker" ).datepicker({ dateFormat: 'yy-mm-dd', changeYear:true, constrainInput: false, gotoCurrent: true, yearRange: "1900:2200"});
     $( "#format" ).on( "change", function() {
       $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
     });
@@ -25,7 +25,7 @@
         <section class="main_form">
             <h1>Search for Near Earth Objects</h1>
             <form action="/results" method="GET">
-                <input type="text" id="datepicker" name="start">
+                <input type="text" id="datepicker" name="start" required>
                 <input type="Submit">
             </form>
         </section>
