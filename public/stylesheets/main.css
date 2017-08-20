@@ -131,10 +131,15 @@
         text-align: center;
         font-size: 1.5em;
         border: 1px solid white;
+        background-color:rgba(255, 255, 255, 0.3);
     }
     
     .individual.danger {
         border: 1px solid red;
+    }
+    
+    #ref-id {
+        color: #ffff66;
     }
     
      @media only screen and (max-width: 1000px) {

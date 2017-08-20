@@ -27,7 +27,7 @@
                           <li>Diameter (miles): <%= data["near_earth_objects"][startDate][i]["estimated_diameter"]["miles"]["estimated_diameter_max"].toFixed(2) %></li>  
                               <% } %>
                           
-                          <li>neo_reference_id: <a href=<%= data["near_earth_objects"][startDate][i]["nasa_jpl_url"] %> target=_blank><%= data["near_earth_objects"][startDate][i]["neo_reference_id"] %></a></li>
+                          <li>neo_reference_id: <a id="ref-id" href=<%= data["near_earth_objects"][startDate][i]["nasa_jpl_url"] %> target=_blank><%= data["near_earth_objects"][startDate][i]["neo_reference_id"] %></a></li>
             </div>        
                  <% } %>  
         </div>  
