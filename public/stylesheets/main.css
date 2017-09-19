@@ -21,6 +21,10 @@
         line-height: 3em;
     }
     
+div.ui-datepicker{
+ font-size:10px;
+}
+    
     /*lander page*/
     
     .main_form {
