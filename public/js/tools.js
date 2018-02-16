@@ -5,3 +5,7 @@
       $( "#datepicker" ).datepicker( "option", "dateFormat", $( this ).val() );
     });
   } );
+  
+  $( ".selector" ).datepicker({
+  gotoCurrent: true
+});

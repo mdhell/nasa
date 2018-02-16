@@ -8,14 +8,14 @@ app.get("/", function(req, res) {
     res.render("search");
 });
     
-require("jsdom").env("", function(err, window) {
-    if (err) {
-        console.error(err);
-        return;
-    }
+// require("jsdom").env("", function(err, window) {
+//     if (err) {
+//         console.error(err);
+//         return;
+//     }
  
-    var $ = require("jquery")(window);
-});
+//     var $ = require("jquery")(window);
+// });
 
 app.get("/results", function(req, res) {
     //console.log(req.query.start);
