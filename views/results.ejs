@@ -1,10 +1,17 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link  rel="stylesheet" href="/stylesheets/reset.css">
 <link  rel="stylesheet" href="/stylesheets/main.css">
 <meta name="viewport" content="width=device-width; initial-scale = 1.0; maximum-scale=1.0; user-scalable=no" />
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
     <div class="page_wrapper">
         <div class="dates">
             <h3>For <%= startDate %> the number of objects in 'Near Earth Orbit' is : <%= data["element_count"] %></h5>
+            <form action="/results" method="GET">
+                <input type="text" id="datepicker" name="start" required>
+                <input type="Submit">
+            </form>
             
                  <% for (var i=0, len=data["near_earth_objects"][startDate].length; i < len; i ++ ) { %>
             <div class="individual">
@@ -45,3 +52,8 @@
             <!--</form>-->
         
     <script src="/js/tools.js"></script>
+    <script>
+        var selectedDate = window.location.search.split('').splice(7).join('')
+        $("#datepicker").val(selectedDate);
+    </script>
+    
