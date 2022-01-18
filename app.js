@@ -22,7 +22,7 @@ app.get("/results", function(req, res) {
     var startDate = req.query.start;
     var endDate   = req.query.end;
     // var url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=DEMO_KEY";
-    var url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + startDate + "&end_date=" + startDate + "&api_key=98OtiAcpdjH97wT43K81GrWDll5iz3hmEpMVWAYX";
+    var url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + startDate + "&end_date=" + startDate + "&api_key=5LtjDvkS64nPQYbfPudOl8szw8gwT9Z03i4ScysJ";
     // var url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=2016-09-07&end_date=2016-09-08&api_key=98OtiAcpdjH97wT43K81GrWDll5iz3hmEpMVWAYX";
     request(url, function(err, response, body) {
     if(!err && response.statusCode == 200) {
