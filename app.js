@@ -27,7 +27,7 @@ app.get("/results", function(req, res) {
     request(url, function(err, response, body) {
     if(!err && response.statusCode == 200) {
             var data = JSON.parse(body);
-            console.log(data);
+            
             // var data = JSON.parse(body);
             res.render("results", {data: data, startDate: startDate, endDate: endDate});
             
