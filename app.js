@@ -18,26 +18,7 @@ app.get("/", function(req, res) {
  
 //     var $ = require("jquery")(window);
 // });
-// begin timeout
-var app = express()
-app.post('/save', timeout('5s'), bodyParser.json(), haltOnTimedout, function (req, res, next) {
-  savePost(req.body, function (err, id) {
-    if (err) return next(err)
-    if (req.timedout) return
-    res.send('saved as id ' + id)
-  })
-})
- 
-function haltOnTimedout (req, res, next) {
-  if (!req.timedout) next()
-}
- 
-function savePost (post, cb) {
-  setTimeout(function () {
-    cb(null, ((Math.random() * 40000) >>> 0))
-  }, (Math.random() * 7000) >>> 0)
-}
-// end timeout
+
 // 
 app.get("/results", function(req, res) {
     //console.log(req.query.start);
@@ -70,6 +51,29 @@ app.get("/results", function(req, res) {
     });
 // });
 });
+
+// begin timeout
+// var app = express()
+// app.post('/save', timeout('5s'), bodyParser.json(), haltOnTimedout, function (req, res, next) {
+//   savePost(req.body, function (err, id) {
+//     if (err) return next(err)
+//     if (req.timedout) return
+//     res.send('saved as id ' + id)
+//   })
+// })
+ 
+// function haltOnTimedout (req, res, next) {
+//   if (!req.timedout) next()
+// }
+ 
+// function savePost (post, cb) {
+//   setTimeout(function () {
+//     cb(null, ((Math.random() * 40000) >>> 0))
+//   }, (Math.random() * 7000) >>> 0)
+// }
+// end timeout
+
+app.use(timeout('30s'))
 
 app.listen(process.env.PORT || 3000, process.env.IP, function() {
     console.log("NEO API server is up!");
