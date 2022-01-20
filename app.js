@@ -1,6 +1,8 @@
 var express = require("express"),
     app     = express(),
     request = require("request");
+    bodyParser = require('body-parser');
+     timeout = require('connect-timeout');
     
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -16,7 +18,27 @@ app.get("/", function(req, res) {
  
 //     var $ = require("jquery")(window);
 // });
-
+// begin timeout
+var app = express()
+app.post('/save', timeout('5s'), bodyParser.json(), haltOnTimedout, function (req, res, next) {
+  savePost(req.body, function (err, id) {
+    if (err) return next(err)
+    if (req.timedout) return
+    res.send('saved as id ' + id)
+  })
+})
+ 
+function haltOnTimedout (req, res, next) {
+  if (!req.timedout) next()
+}
+ 
+function savePost (post, cb) {
+  setTimeout(function () {
+    cb(null, ((Math.random() * 40000) >>> 0))
+  }, (Math.random() * 7000) >>> 0)
+}
+// end timeout
+// 
 app.get("/results", function(req, res) {
     //console.log(req.query.start);
     var startDate = req.query.start;
