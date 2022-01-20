@@ -20,6 +20,7 @@ app.get("/", function(req, res) {
 // });
 
 // 
+
 app.get("/results", function(req, res) {
     //console.log(req.query.start);
     var startDate = req.query.start;
@@ -28,6 +29,7 @@ app.get("/results", function(req, res) {
     var url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=" + startDate + "&end_date=" + startDate + "&api_key=5LtjDvkS64nPQYbfPudOl8szw8gwT9Z03i4ScysJ";
     // var url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=2016-09-07&end_date=2016-09-08&api_key=98OtiAcpdjH97wT43K81GrWDll5iz3hmEpMVWAYX";
     request(url, function(err, response, body) {
+        app.use(timeout('5s'));
     if(!err && response.statusCode == 200) {
             var data = JSON.parse(body);
             
@@ -73,7 +75,7 @@ app.get("/results", function(req, res) {
 // }
 // end timeout
 
-app.use(timeout('15s'))
+
 
 app.listen(process.env.PORT || 3000, process.env.IP, function() {
     console.log("NEO API server is up!");
