@@ -73,7 +73,7 @@ app.get("/results", function(req, res) {
 // }
 // end timeout
 
-app.use(timeout('30s'))
+app.use(timeout('5s'))
 
 app.listen(process.env.PORT || 3000, process.env.IP, function() {
     console.log("NEO API server is up!");
