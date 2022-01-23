@@ -32,7 +32,7 @@ app.get("/results", function(req, res) {
 
     if(!err && response.statusCode == 200) {
             var data = JSON.parse(body);
-            console.log(data);
+            
             // var data = JSON.parse(body);
             res.render("results", {data: data, startDate: startDate, endDate: endDate});
             
@@ -47,7 +47,7 @@ app.get("/results", function(req, res) {
             // console.log(req.query.page);
             // console.log(body);
             // res.render("results", {data: data});
-            
+
     } else {
         console.log("Sorry, there was some type of error...");
     }
